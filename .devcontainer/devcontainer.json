@@ -1,0 +1,37 @@
+{
+  "name": "Analytics Engineer",
+  "dockerComposeFile": "../docker-compose.yaml",
+  "service": "airflow-webserver",
+  "workspaceFolder": "/opt/airflow",
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Airflow UI",
+      "onAutoForward": "notify"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "postCreateCommand": "pip install --no-cache-dir -r /opt/airflow/requirements.txt",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "innoverio.vscode-dbt-power-user",
+        "samuelcolvin.jinjahtml",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "editor.formatOnSave": true,
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        }
+      }
+    }
+  }
+}
